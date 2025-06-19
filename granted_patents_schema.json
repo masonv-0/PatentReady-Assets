@@ -5,29 +5,29 @@
     "properties": {
       "granted_patents": {
         "type": "array",
-        "description": "A list of granted patents.",
+        "description": "A list of granted patents that are similar to the submitted invention.",
         "items": {
           "type": "object",
           "properties": {
             "number": {
               "type": "string",
-              "description": "The unique number assigned to the patent."
+              "description": "The official U.S. patent number assigned by the USPTO to a granted patent."
             },
             "title": {
               "type": "string",
-              "description": "The title of the patent."
+              "description": "The full title of the granted patent, summarizing its subject matter and scope."
             },
             "assignee": {
               "type": "string",
-              "description": "The entity or person to whom the patent is assigned."
+              "description": "The company, organization, or individual to whom the rights of the patent have been assigned. Often the original inventor's employer or a licensing entity."
             },
             "relevance": {
               "type": "string",
-              "description": "The relevance of the patent to a specific context."
+              "description": "A brief description explaining how this patent overlaps with, relates to, or differs from the submitted invention. Focus on functional, technical, or conceptual similarity."
             },
             "risk_level": {
               "type": "string",
-              "description": "The assessed risk level associated with the patent."
+              "description": "An assessment of how likely this patent could pose a conflict during prosecution or enforcement. High = strong overlap; Medium = possible conflict; Low = different scope or industry."
             },
             "source": {
               "type": "string",
