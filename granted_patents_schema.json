@@ -1,55 +1,46 @@
 {
-  "name": "granted_patents",
-  "schema": {
-    "type": "object",
-    "properties": {
-      "granted_patents": {
-        "type": "array",
-        "description": "A list of granted patents that are similar to the submitted invention.",
-        "items": {
-          "type": "object",
-          "properties": {
-            "number": {
-              "type": "string",
-              "description": "The official U.S. patent number assigned by the USPTO to a granted patent."
-            },
-            "title": {
-              "type": "string",
-              "description": "The full title of the granted patent, summarizing its subject matter and scope."
-            },
-            "assignee": {
-              "type": "string",
-              "description": "The company, organization, or individual to whom the rights of the patent have been assigned. Often the original inventor's employer or a licensing entity."
-            },
-            "relevance": {
-              "type": "string",
-              "description": "A brief description explaining how this patent overlaps with, relates to, or differs from the submitted invention. Focus on functional, technical, or conceptual similarity."
-            },
-            "risk_level": {
-              "type": "string",
-              "description": "An assessment of how likely this patent could pose a conflict during prosecution or enforcement. High = strong overlap; Medium = possible conflict; Low = different scope or industry."
-            },
-            "source": {
-              "type": "string",
-              "description": "The source from which the patent information is derived."
-            }
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Granted Patents Schema",
+  "description": "A list of granted patents that are similar to the submitted invention.",
+  "type": "object",
+  "properties": {
+    "granted_patents": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "description": "The official U.S. patent number assigned by the USPTO to a granted patent."
           },
-          "required": [
-            "number",
-            "title",
-            "assignee",
-            "relevance",
-            "risk_level",
-            "source"
-          ],
-          "additionalProperties": false
-        }
+          "title": {
+            "type": "string",
+            "description": "The full title of the granted patent, summarizing its subject matter and scope."
+          },
+          "assignee": {
+            "type": "string",
+            "description": "The company, organization, or individual to whom the rights of the patent have been assigned."
+          },
+          "relevance": {
+            "type": "string",
+            "description": "A brief description of how this patent relates to the submitted invention."
+          },
+          "risk_level": {
+            "type": "string",
+            "enum": ["Low", "Medium", "High"],
+            "description": "Risk level indicating likelihood of conflict during prosecution."
+          },
+          "source": {
+            "type": "string",
+            "format": "uri",
+            "description": "The source URL from which the patent data was pulled."
+          }
+        },
+        "required": ["number", "title", "assignee", "relevance", "risk_level", "source"],
+        "additionalProperties": false
       }
-    },
-    "required": [
-      "granted_patents"
-    ],
-    "additionalProperties": false
+    }
   },
-  "strict": true
+  "required": ["granted_patents"],
+  "additionalProperties": false
 }
