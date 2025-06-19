@@ -1,29 +1,55 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Granted Patents Result Schema",
-  "description": "Returns a list of granted patents with key attributes such as number, title, assignee, relevance score, risk level, and source URL.",
-  "type": "object",
-  "properties": {
-    "granted_patents": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "number": { "type": "string" },
-          "title": { "type": "string" },
-          "assignee": { "type": "string" },
-          "relevance": { "type": "number" },
-          "risk_level": {
-            "type": "string",
-            "enum": ["Low", "Medium", "High"]
+  "name": "granted_patents",
+  "schema": {
+    "type": "object",
+    "properties": {
+      "granted_patents": {
+        "type": "array",
+        "description": "A list of granted patents.",
+        "items": {
+          "type": "object",
+          "properties": {
+            "number": {
+              "type": "string",
+              "description": "The unique number assigned to the patent."
+            },
+            "title": {
+              "type": "string",
+              "description": "The title of the patent."
+            },
+            "assignee": {
+              "type": "string",
+              "description": "The entity or person to whom the patent is assigned."
+            },
+            "relevance": {
+              "type": "string",
+              "description": "The relevance of the patent to a specific context."
+            },
+            "risk_level": {
+              "type": "string",
+              "description": "The assessed risk level associated with the patent."
+            },
+            "source": {
+              "type": "string",
+              "description": "The source from which the patent information is derived."
+            }
           },
-          "source": { "type": "string", "format": "uri" }
-        },
-        "required": ["number", "title", "assignee", "relevance", "risk_level", "source"],
-        "additionalProperties": false
+          "required": [
+            "number",
+            "title",
+            "assignee",
+            "relevance",
+            "risk_level",
+            "source"
+          ],
+          "additionalProperties": false
+        }
       }
-    }
+    },
+    "required": [
+      "granted_patents"
+    ],
+    "additionalProperties": false
   },
-  "required": ["granted_patents"],
-  "additionalProperties": false
+  "strict": true
 }
